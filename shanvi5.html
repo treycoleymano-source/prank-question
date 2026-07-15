@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Question 💖</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+background:linear-gradient(135deg,#ff3b6a,#ff5f7e,#ff8fa3);
+}
+
+.card{
+width:450px;
+height:260px;
+background:rgba(255,255,255,.18);
+backdrop-filter:blur(10px);
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+position:relative;
+text-align:center;
+padding-top:35px;
+}
+
+h2{
+color:#fff;
+margin-bottom:70px;
+}
+
+button{
+padding:12px 28px;
+font-size:18px;
+font-weight:bold;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+#yes{
+position:absolute;
+left:110px;
+top:150px;
+background:#2ecc71;
+color:white;
+}
+
+#no{
+position:absolute;
+right:110px;
+top:150px;
+background:white;
+color:#ff3b6a;
+}
+
+#msg{
+position:absolute;
+bottom:20px;
+width:100%;
+font-size:22px;
+font-weight:bold;
+color:white;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>💖 Kya Shanvi ek achi ladki hai? 💖</h2>
+
+<button id="yes">Yes</button>
+<button id="no">No</button>
+
+<div id="msg"></div>
+
+</div>
+
+<script>
+
+const yes=document.getElementById("yes");
+const no=document.getElementById("no");
+const card=document.querySelector(".card");
+const msg=document.getElementById("msg");
+
+document.addEventListener("mousemove",(e)=>{
+
+const b=yes.getBoundingClientRect();
+
+const x=b.left+b.width/2;
+const y=b.top+b.height/2;
+
+const d=Math.hypot(e.clientX-x,e.clientY-y);
+
+if(d<90){
+
+const maxX=card.clientWidth-yes.offsetWidth-20;
+const maxY=card.clientHeight-yes.offsetHeight-20;
+
+const left=Math.random()*maxX+10;
+const top=Math.random()*(maxY-70)+80;
+
+yes.style.left=left+"px";
+yes.style.top=top+"px";
+
+}
+
+});
+
+yes.onclick=function(e){
+e.preventDefault();
+return false;
+};
+
+no.onclick=function(){
+msg.innerHTML="😂 Wow! You know yourself very well. 💖";
+};
+
+</script>
+
+</body>
+</html>
